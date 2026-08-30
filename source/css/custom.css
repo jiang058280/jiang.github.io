@@ -242,6 +242,74 @@ html[data-theme='dark'] .lz-profile {
   background: var(--lz-grad);
 }
 
+/* ---------- 左侧竖列导航坞（桌面端） ---------- */
+@media screen and (min-width: 900px) {
+  /* 把顶部栏里的菜单改成左侧悬浮玻璃坞 */
+  #nav #menus {
+    position: fixed;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 91;
+    padding: 12px 10px;
+    background: rgba(255, 255, 255, 0.74);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--lz-mist);
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(16, 49, 107, 0.12);
+  }
+  html[data-theme='dark'] #nav #menus {
+    background: rgba(23, 33, 56, 0.72);
+    border-color: rgba(46, 124, 246, 0.25);
+  }
+  #nav #menus .menus_items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+  #nav #menus .menus_item {
+    width: 100%;
+  }
+  #nav #menus .menus_item > a.site-page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 11px;
+    color: var(--lz-ink);
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  #nav #menus .menus_item > a.site-page i {
+    width: 1.1em;
+    text-align: center;
+  }
+  #nav #menus .menus_item > a.site-page:hover,
+  #nav #menus .menus_item > a.active {
+    background: var(--lz-mist);
+    color: var(--lz-sky);
+  }
+  /* 竖排模式下：悬停指示从下划线改为左侧渐变竖条 */
+  #nav #menus .menus_item > a.site-page::after {
+    left: 0;
+    top: 50%;
+    bottom: auto;
+    width: 3px;
+    height: 0;
+    transform: translateY(-50%);
+  }
+  #nav #menus .menus_item:hover > a.site-page::after {
+    width: 3px;
+    height: 58%;
+  }
+  /* 中等宽度下给主内容让出导航坞的位置 */
+  .layout {
+    padding-left: 96px;
+  }
+}
+
 /* ---------- 质量底线 ---------- */
 @media (prefers-reduced-motion: reduce) {
   #recent-posts > .recent-post-item,

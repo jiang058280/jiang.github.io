@@ -9,7 +9,7 @@ nav:
 # 导航菜单（左侧导航坞由此生成）——图标选用了视觉重量均匀的一组
 menu:
   首页: / || fas fa-house
-  最新文章: / || fas fa-file-lines
+  文章: / || fas fa-file-lines
   归档: /archives/ || fas fa-box-archive
   标签: /tags/ || fas fa-tag
   分类: /categories/ || fas fa-folder

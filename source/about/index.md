@@ -6,7 +6,7 @@ type: about
 
 <div class="lz-about">
 
-<p class="lz-headline">刘国庆<small>AI 应用开发工程师 · 记录技术与生活</small></p>
+<p class="lz-headline">刘国庆</p>
 <div class="lz-meta">
   <span>💼 意向职位：<strong>AI 应用开发（Agent / RAG）</strong></span>
   <span>📅 工作年限：<strong>一年</strong></span>

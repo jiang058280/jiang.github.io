@@ -6,13 +6,13 @@
 nav:
   display_title: false
 
-# 导航菜单（左侧导航坞由此生成）——图标选用了视觉重量均匀的一组
+# 导航菜单（左侧导航坞由此生成）——「文章」为可展开的父菜单
 menu:
   首页: / || fas fa-house
-  文章: / || fas fa-file-lines
-  归档: /archives/ || fas fa-box-archive
-  标签: /tags/ || fas fa-tag
-  分类: /categories/ || fas fa-folder
+  文章||fas fa-file-lines:
+    分类: /categories/ || fas fa-folder
+    标签: /tags/ || fas fa-tag
+    归档: /archives/ || fas fa-box-archive
   公告: /announcement/ || fas fa-bell
   个人简介: /about/ || fas fa-user
 
@@ -20,9 +20,9 @@ menu:
 # 注意：修改了 custom.css / custom.js 后要把 v= 版本号 +1，浏览器才会拉新文件
 inject:
   head:
-    - <link rel="stylesheet" href="/css/custom.css?v=20260830p">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260831a">
   bottom:
-    - <script src="/js/custom.js?v=20260830p"></script>
+    - <script src="/js/custom.js?v=20260831a"></script>
 
 # pjax 局部刷新：切换页面只替换内容区，不整页重载
 pjax:

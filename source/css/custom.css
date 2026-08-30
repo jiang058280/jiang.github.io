@@ -359,6 +359,77 @@ html[data-theme='dark'] .lz-profile {
     padding-left: 200px;
     padding-right: 8px;
   }
+  /* 父菜单项（无链接的 group 项，如「文章」） */
+  #lz-dock span.site-page.group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 11px;
+    color: var(--lz-ink);
+    font-size: 1.08em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  #lz-dock span.site-page.group:hover {
+    color: var(--lz-sky);
+  }
+  #lz-dock .menus_item.open > span.site-page.group {
+    background: var(--lz-mist);
+    color: var(--lz-sky);
+    font-weight: 600;
+  }
+  /* 父项箭头展开时旋转 */
+  #lz-dock span.site-page.group > i.fas.fa-chevron-down {
+    margin-left: auto;
+    transition: transform 0.25s ease;
+    font-size: 0.8em;
+  }
+  #lz-dock .menus_item.open > span.site-page.group > i.fas.fa-chevron-down {
+    transform: rotate(180deg);
+  }
+  /* 子菜单：内嵌手风琴展开（覆盖主题的悬浮下拉） */
+  #lz-dock .menus_item .menus_item_child {
+    display: none;
+    position: static !important;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    margin: 4px 0 4px 14px;
+    padding: 0 0 0 6px;
+    border-left: 2px solid var(--lz-mist);
+    width: auto;
+    animation: none;
+    min-width: 0;
+  }
+  #lz-dock .menus_item.open .menus_item_child {
+    display: block;
+  }
+  #lz-dock .menus_item_child li {
+    list-style: none;
+    width: 100%;
+  }
+  #lz-dock .menus_item_child a.site-page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    color: var(--lz-ink);
+    font-size: 0.98em;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  #lz-dock .menus_item_child a.site-page:hover {
+    color: var(--lz-sky);
+  }
+  #lz-dock .menus_item_child a.site-page.active {
+    background: var(--lz-mist);
+    color: var(--lz-sky);
+    font-weight: 600;
+  }
 }
 @media screen and (max-width: 899px) {
   #lz-dock {

@@ -2,6 +2,7 @@
  * LGQ的博客 · 左侧竖列导航坞
  * 桌面端(≥900px)把顶栏菜单克隆到 body 根节点做左侧悬浮坞，
  * 脱离 #nav 的 transform 影响（Butterfly 滚动时会变换顶栏，fixed 子元素会失效）。
+ * 支持「文章」父子菜单：点击父项展开/收起子项。
  */
 (function () {
   var dock = null;
@@ -19,10 +20,15 @@
       '<div><div class="lz-name">刘国庆</div><div class="lz-sub">个人博客</div></div>' +
       '</div>' +
       items.outerHTML;
-    // 记录用户点击的是哪个入口（「首页」和「最新文章」指向同一页面，点击谁亮谁）
+    // 点击处理：父项（无链接的 group）切换展开；子链接记录用于高亮
     dock.addEventListener('click', function (e) {
-      var a = e.target.closest('.menus_item > a');
-      if (a) lastClicked = a;
+      var group = e.target.closest('span.site-page.group');
+      if (group) {
+        group.parentElement.classList.toggle('open');
+        return;
+      }
+      var a = e.target.closest('a');
+      if (a && a.parentElement.classList.contains('menus_item')) lastClicked = a;
     });
     document.body.appendChild(dock);
     refreshDockActive();
@@ -34,12 +40,12 @@
     buildDock();
   }
 
-  // pjax 切换页面后，按当前路径刷新侧边栏菜单的高亮状态
+  // pjax 切换页面后，按当前路径刷新高亮；子项高亮时自动展开其父菜单
   function refreshDockActive() {
     if (!dock) return;
-    var links = dock.querySelectorAll('.menus_item > a');
+    var links = dock.querySelectorAll('.menus_item > a, .menus_item_child a');
     var path = location.pathname;
-    var seenRoot = false; // 直接打开首页（无点击记录）时，只亮「首页」
+    var seenRoot = false; // 多个入口指向首页时（首页/文章），只高亮「首页」
     links.forEach(function (a) {
       var href = a.getAttribute('href') || '/';
       var isActive = false;
@@ -54,6 +60,10 @@
       }
       if (href === '/') seenRoot = true;
       a.classList.toggle('active', isActive);
+      if (isActive) {
+        var ul = a.closest('.menus_item_child');
+        if (ul) ul.parentElement.classList.add('open');
+      }
     });
   }
   document.addEventListener('pjax:complete', refreshDockActive);

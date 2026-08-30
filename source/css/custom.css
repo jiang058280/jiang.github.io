@@ -841,6 +841,11 @@ html[data-theme='dark'] .lz-sf .lz-chips span {
   }
 }
 
+/* ---------- 右下角悬浮按钮组整体隐藏 ---------- */
+#rightside {
+  display: none !important;
+}
+
 /* ---------- 页脚整体隐藏（版权行与框架行已通过配置关闭，这里兜底） ---------- */
 #footer {
   display: none !important;

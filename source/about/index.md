@@ -1,5 +1,5 @@
 ---
-title: 关于
+title: 个人简介
 date: 2026-08-30 12:00:00
 type: about
 ---
@@ -9,32 +9,91 @@ type: about
 <div class="lz-profile">
   <img class="lz-avatar" src="/img/avatar.png" alt="刘国庆的头像">
   <h2>刘国庆</h2>
-  <p class="lz-sign">把想法写成文字，把时间变成文章。</p>
+  <p class="lz-sign">AI 应用开发工程师 · 记录技术与生活</p>
+  <div class="lz-meta">
+    <span>💼 意向职位：<strong>AI 应用开发（Agent / RAG）</strong></span>
+    <span>📅 工作年限：<strong>一年</strong></span>
+    <span>📮 <strong>2998384205@qq.com</strong></span>
+    <span>📱 <strong>18435722256</strong></span>
+  </div>
   <div class="lz-links">
     <a href="https://github.com/jiang058280" target="_blank" rel="noopener">GitHub</a>
     <a href="/atom.xml" target="_blank" rel="noopener">RSS 订阅</a>
   </div>
 </div>
 
-<h2 class="lz-h">我在这里写什么</h2>
+<h2 class="lz-h">技术栈</h2>
 
-<p>这是我的个人博客，托管在 GitHub Pages 上，用 Hexo 生成、GitHub Actions 自动发布。</p>
-
-<div class="lz-chips">
-  <span>技术笔记</span>
-  <span>前端</span>
-  <span>Hexo</span>
-  <span>读书</span>
-  <span>生活随笔</span>
+<div class="lz-tech-group">
+  <p class="lz-tech-title">深度学习与 NLP</p>
+  <div class="lz-chips">
+    <span>PyTorch</span><span>Transformer</span><span>BERT</span><span>LoRA / QLoRA 微调</span><span>ONNX 推理优化</span><span>文本分类 / 多任务学习</span><span>SimHash 查重</span>
+  </div>
 </div>
 
-<h2 class="lz-h">小站里程碑</h2>
+<div class="lz-tech-group">
+  <p class="lz-tech-title">大模型与 Agent 开发</p>
+  <div class="lz-chips">
+    <span>Dify</span><span>Coze</span><span>LangChain</span><span>LangGraph</span><span>LlamaIndex</span><span>RAG 检索增强</span><span>Function Calling</span><span>ReAct</span><span>MCP / A2A 协议</span><span>提示词工程</span><span>LangSmith / Langfuse</span>
+  </div>
+</div>
+
+<div class="lz-tech-group">
+  <p class="lz-tech-title">语言与服务</p>
+  <div class="lz-chips">
+    <span>Python</span><span>FastAPI</span><span>Flask</span><span>Streamlit</span><span>MySQL</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Claude Code / Codex</span>
+  </div>
+</div>
+
+<h2 class="lz-h">工作经历</h2>
 
 <ul class="lz-timeline">
   <li>
-    <span class="lz-date">2026-08-30</span>
-    <p>博客正式上线，发布第一篇文章《你好，世界》。</p>
+    <span class="lz-date">2025-09 ~ 2026-06 · 山西仰星科技有限公司 · AI 开发工程师</span>
+    <p>参与智慧教研平台「AI 智能录入」子模块开发：负责 BERT 多任务模型的训练与推理优化、语料清洗与标签体系设计，单题录入时间由分钟级降至秒级；与 4 人团队协同完成接口联调与模型上线，参与需求评审与模型效果迭代。</p>
   </li>
 </ul>
+
+<h2 class="lz-h">项目经历</h2>
+
+<div class="lz-project">
+  <h3>智慧教研平台 — AI 智能试题录入系统</h3>
+  <p class="lz-sub">数据与标签体系 · 多任务模型 · 查重 · 推理优化</p>
+  <div class="lz-metrics">
+    <span>录题 3~5 分钟 → 10 秒内</span><span>效率提升 95%+</span><span>联合准确率 89.8%</span><span>上线 3 个月录入 2.4 万+ 题</span><span>覆盖 60+ 所学校</span>
+  </div>
+  <ul>
+    <li><b>数据与标签体系：</b>清洗、去重并规范化历史录题语料 3.2 万余条，搭建「12 学科 / 8 题型 / 320+ 知识点」三级标签体系与统一标注规范，双人交叉标注一致率由 82% 提升至 95%。</li>
+    <li><b>多任务模型训练：</b>基于 bert-base-chinese 构建共享主干 + 3 分类头架构，并行预测学科 / 题型 / 知识点，加权联合损失缓解任务冲突；5000 条人工复核测试集上三级联合准确率 89.8%，知识点 F1 较单任务基线提升 6.2pt。</li>
+    <li><b>题目查重：</b>基于 SimHash 计算 64 位文本指纹，以海明距离阈值 3 判定近似重复，题库重复率由约 6% 降至 0.5% 以内，累计拦截重复、相似题目 2000+ 条。</li>
+    <li><b>推理优化与联调：</b>模型导出 ONNX 并引入动态 batch 推理，单题 P95 耗时由 216ms 降至 125ms（降低 42%）；GPU/CPU 自动适配，经 100 并发压测稳定运行，支撑全市无 GPU 环境学校灵活部署。</li>
+  </ul>
+  <div class="lz-result">
+    <b>项目成果：</b>单题录入由 3~5 分钟压缩至 10 秒内，录题效率提升 95% 以上；上线 3 个月累计自动录入试题 2.4 万余道，覆盖全市 60 余所学校；修正样本按周回流再训练，学科分类准确率由 96.5% 迭代至 98.94%，标准化标签直接支撑智能组卷与学情分析上线。
+  </div>
+</div>
+
+<div class="lz-project">
+  <h3>智能工单系统</h3>
+  <p class="lz-sub">Dify 工作流编排 · RAG 知识库 · 提示词工程 · 效果评估</p>
+  <div class="lz-metrics">
+    <span>回复准确率 85% → 93%</span><span>响应 10 分钟 → 30 秒</span><span>60%+ 工单自动解决</span><span>人工处理量下降约 40%</span><span>检索命中率 91%</span>
+  </div>
+  <ul>
+    <li><b>流程编排：</b>基于 Dify 搭建「意图识别 → 优先级判断 → RAG 检索 → 自动回复 → 人工兜底」全链路工作流，覆盖 6 类工单意图、3 级优先级，意图识别准确率 95%，优先级判定与人工一致率 92%。</li>
+    <li><b>RAG 知识库建设：</b>清洗并切分公司内部文档 200+ 篇为 3000+ 语义分段，调优检索策略（top-5 召回、相似度阈值 0.7），检索命中率由 78% 提升至 91%，回复自动附带知识库来源引用。</li>
+    <li><b>提示词工程与数据管理：</b>以提示词约束答复口径与拒答边界，检索无命中自动转人工，常见问题自动应答覆盖率 60%+；设计 MySQL 工单、会话、命中日志表结构，支撑答复质量抽检与 bad case 回流。</li>
+    <li><b>效果评估与迭代：</b>人工评审 500+ 条生成答复并做 bad case 归因，按周迭代知识库与提示词，客服回复准确率由 85% 提升至 93%；新客服培训周期由 4 周缩短至 2 周，答复口径全面对齐知识库标准。</li>
+  </ul>
+  <div class="lz-result">
+    <b>项目成果：</b>客服回复准确率提升至 93%，平均响应时长由 10 分钟级缩短至 30 秒内；约 60% 的常见问题工单无需人工介入自动解决，人工工单处理量下降约 40%；新客服培训周期由 4 周缩短至 2 周。
+  </div>
+</div>
+
+<h2 class="lz-h">自我评价</h2>
+
+<div class="lz-quote">
+  一年 AI 开发经验，完整参与过一个上线项目从模型训练到部署的全流程。习惯先把需求拆清楚再动手，遇到问题倾向查文档、读源码自己解决。业余持续跟进 Agent 应用开发，用 Dify 做过个人项目练手。期待在 AI 应用开发方向长期深耕。
+</div>
 
 </div>

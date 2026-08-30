@@ -20,9 +20,30 @@ menu:
 # 注意：修改了 custom.css / custom.js 后要把 v= 版本号 +1，浏览器才会拉新文件
 inject:
   head:
-    - <link rel="stylesheet" href="/css/custom.css?v=20260830k">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260830l">
   bottom:
-    - <script src="/js/custom.js?v=20260830k"></script>
+    - <script src="/js/custom.js?v=20260830l"></script>
+
+# pjax 局部刷新：切换页面只替换内容区，不整页重载
+pjax:
+  enable: true
+
+# instant.page 悬停预取：鼠标悬停菜单即预先加载目标页
+instantpage: true
+
+# 关闭不蒜子统计（减少一个外部脚本依赖）
+busuanzi:
+  site_uv: false
+  site_pv: false
+  page_pv: false
+
+# 第三方资源自托管（全部指向项目内文件，不再依赖国外 CDN）
+CDN:
+  option:
+    fontawesome: /css/fontawesome/all.min.css
+    egjs_infinitegrid: /js/infinitegrid.min.js
+    instantpage: /js/instantpage.js
+    pjax: /js/pjax.min.js
 
 # 作者头像（侧边栏作者卡片）
 avatar:

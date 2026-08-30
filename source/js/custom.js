@@ -24,4 +24,16 @@
   } else {
     buildDock();
   }
+
+  // pjax 切换页面后，按当前路径刷新侧边栏菜单的高亮状态
+  function refreshDockActive() {
+    var links = document.querySelectorAll('#lz-dock .menus_item > a');
+    var path = location.pathname;
+    links.forEach(function (a) {
+      var href = a.getAttribute('href') || '/';
+      var active = href === '/' ? path === '/' : path.indexOf(href) === 0;
+      a.classList.toggle('active', active);
+    });
+  }
+  document.addEventListener('pjax:complete', refreshDockActive);
 })();

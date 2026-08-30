@@ -14,7 +14,6 @@ menu:
   标签: /tags/ || fas fa-tag
   分类: /categories/ || fas fa-folder
   公告: /announcement/ || fas fa-bell
-  网站信息: /site-info/ || fas fa-circle-info
   个人简介: /about/ || fas fa-user
 
 # 自定义样式与脚本注入（不改主题源码，升级主题不受影响）

@@ -295,8 +295,12 @@ html[data-theme='dark'] .lz-profile {
     transition: background 0.2s ease, color 0.2s ease;
   }
   #lz-dock .menus_item > a.site-page i {
-    width: 1.15em;
+    width: 1.25em;
+    height: 1.25em;
+    line-height: 1.25em;
+    font-size: 1em;
     text-align: center;
+    vertical-align: middle;
   }
   #lz-dock .menus_item > a.site-page:hover,
   #lz-dock .menus_item > a.active {

@@ -249,7 +249,7 @@ html[data-theme='dark'] .lz-profile {
   }
 }
 
-/* ---------- 左侧竖列导航坞（桌面端） ---------- */
+/* ---------- 左侧竖列导航坞 · 液态玻璃（桌面端） ---------- */
 @media screen and (min-width: 900px) {
   /* 隐藏顶栏里的原菜单，导航由 body 根节点下的 #lz-dock 接管（custom.js 克隆生成） */
   #nav #menus {
@@ -262,28 +262,75 @@ html[data-theme='dark'] .lz-profile {
     bottom: 0;
     width: 176px;
     z-index: 91;
-    padding: 20px 10px;
-    background: #ffffff;
+    padding: 16px 10px;
+    background: linear-gradient(178deg, #D8E9FF 0%, #E9F4FF 40%, #F2FAFF 100%);
     border: none;
-    border-right: 1px solid var(--lz-mist);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 0;
-    box-shadow: 4px 0 20px rgba(16, 49, 107, 0.06);
+    box-shadow: 6px 0 30px rgba(31, 90, 180, 0.10);
     overflow-y: auto;
+    overflow-x: hidden;
   }
-  /* 侧边栏顶部品牌区：头像 + 名字 */
+  /* 液态光斑：玻璃后面的流动色彩 */
+  #lz-dock::before,
+  #lz-dock::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  #lz-dock::before {
+    width: 150px;
+    height: 150px;
+    left: -45px;
+    top: 6%;
+    background: radial-gradient(circle at 35% 35%, rgba(96, 165, 250, 0.5), rgba(96, 165, 250, 0) 70%);
+    filter: blur(6px);
+  }
+  #lz-dock::after {
+    width: 180px;
+    height: 180px;
+    right: -60px;
+    bottom: 4%;
+    background: radial-gradient(circle at 40% 40%, rgba(45, 212, 232, 0.4), rgba(45, 212, 232, 0) 70%);
+    filter: blur(8px);
+  }
+  html[data-theme='dark'] #lz-dock {
+    background: linear-gradient(178deg, #16223C 0%, #101A30 100%);
+    border-right-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.4);
+  }
+  html[data-theme='dark'] #lz-dock::before {
+    background: radial-gradient(circle at 35% 35%, rgba(37, 99, 235, 0.4), rgba(37, 99, 235, 0) 70%);
+  }
+  html[data-theme='dark'] #lz-dock::after {
+    background: radial-gradient(circle at 40% 40%, rgba(34, 211, 238, 0.25), rgba(34, 211, 238, 0) 70%);
+  }
+
+  /* 品牌区：玻璃铭牌 */
   #lz-dock .lz-brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 4px 8px 14px;
-    border-bottom: 1px solid var(--lz-mist);
-    margin-bottom: 12px;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+    background: rgba(255, 255, 255, 0.42);
+    -webkit-backdrop-filter: blur(14px) saturate(1.6);
+    backdrop-filter: blur(14px) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(31, 90, 180, 0.08);
+  }
+  html[data-theme='dark'] #lz-dock .lz-brand {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 14px rgba(0, 0, 0, 0.25);
   }
   #lz-dock .lz-brand img {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(46, 124, 246, 0.2);
+    box-shadow: 0 2px 10px rgba(46, 124, 246, 0.25);
   }
   #lz-dock .lz-brand .lz-name {
     font-weight: 700;
@@ -295,92 +342,87 @@ html[data-theme='dark'] .lz-profile {
     font-size: 0.78em;
     color: var(--lz-slate);
   }
-  html[data-theme='dark'] #lz-dock {
-    background: rgba(23, 33, 56, 0.9);
-    border-color: rgba(46, 124, 246, 0.25);
-  }
-  html[data-theme='dark'] #lz-dock {
-    background: rgba(23, 33, 56, 0.72);
-    border-color: rgba(46, 124, 246, 0.25);
-  }
+
   #lz-dock .menus_items {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
     width: 100%;
+    position: relative;
+    z-index: 1;
   }
   #lz-dock .menus_item {
     width: 100%;
     list-style: none;
   }
-  #lz-dock .menus_item > a.site-page {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    border-radius: 11px;
-    color: var(--lz-ink);
-    font-size: 1.08em;
-    white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  #lz-dock .menus_item > a.site-page i {
-    width: 1.35em;
-    height: 1.35em;
-    line-height: 1.35em;
-    font-size: 1.05em;
-    text-align: center;
-    vertical-align: middle;
-  }
-  #lz-dock .menus_item > a.site-page:hover {
-    background: transparent;
-    color: var(--lz-sky);
-  }
-  #lz-dock .menus_item > a.site-page.active {
-    background: var(--lz-mist);
-    color: var(--lz-sky);
-    font-weight: 600;
-  }
-  /* 左侧渐变竖条只跟随当前选中项，悬停不显示 */
-  #lz-dock .menus_item > a.site-page::after {
-    left: 0;
-    top: 50%;
-    bottom: auto;
-    width: 3px;
-    height: 0;
-    transform: translateY(-50%);
-  }
-  #lz-dock .menus_item > a.site-page.active::after {
-    width: 3px;
-    height: 58%;
-  }
-  /* 主内容区整体右移，为侧边栏让位 */
-  .layout {
-    padding-left: 200px;
-    padding-right: 8px;
-  }
-  /* 父菜单项（无链接的 group 项，如「文章」） */
+
+  /* 玻璃胶囊基座：菜单链接与父项共用 */
+  #lz-dock .menus_item > a.site-page,
   #lz-dock span.site-page.group {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
-    border-radius: 11px;
+    padding: 12px 15px;
+    border-radius: 15px;
     color: var(--lz-ink);
-    font-size: 1.08em;
-    cursor: pointer;
+    font-size: 1.05em;
     white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
+    background: rgba(255, 255, 255, 0.38);
+    -webkit-backdrop-filter: blur(16px) saturate(1.7);
+    backdrop-filter: blur(16px) saturate(1.7);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 12px rgba(31, 90, 180, 0.06);
+    transition: background 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
   }
+  html[data-theme='dark'] #lz-dock .menus_item > a.site-page,
+  html[data-theme='dark'] #lz-dock span.site-page.group {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.13);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 4px 12px rgba(0, 0, 0, 0.22);
+  }
+  #lz-dock .menus_item > a.site-page i {
+    width: 1.3em;
+    height: 1.3em;
+    line-height: 1.3em;
+    font-size: 1.05em;
+    text-align: center;
+    vertical-align: middle;
+  }
+  /* 悬停：玻璃变亮，无背景突变 */
+  #lz-dock .menus_item > a.site-page:hover,
   #lz-dock span.site-page.group:hover {
+    background: rgba(255, 255, 255, 0.62);
     color: var(--lz-sky);
   }
+  html[data-theme='dark'] #lz-dock .menus_item > a.site-page:hover,
+  html[data-theme='dark'] #lz-dock span.site-page.group:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--lz-sky);
+  }
+  /* 选中：更实的白玻璃 + 蓝字 */
+  #lz-dock .menus_item > a.site-page.active,
   #lz-dock .menus_item.open > span.site-page.group {
-    background: var(--lz-mist);
+    background: rgba(255, 255, 255, 0.88);
     color: var(--lz-sky);
     font-weight: 600;
+    border-color: rgba(255, 255, 255, 0.95);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 6px 18px rgba(46, 124, 246, 0.18);
   }
-  /* 父项箭头展开时旋转 */
+  html[data-theme='dark'] #lz-dock .menus_item > a.site-page.active,
+  html[data-theme='dark'] #lz-dock .menus_item.open > span.site-page.group {
+    background: rgba(96, 165, 250, 0.22);
+    border-color: rgba(147, 197, 253, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 6px 18px rgba(0, 0, 0, 0.3);
+  }
+  /* 旧版左侧渐变竖条：液态玻璃下移除 */
+  #lz-dock .menus_item > a.site-page::after {
+    display: none;
+  }
+
+  /* 父菜单项（group）箭头 */
+  #lz-dock span.site-page.group {
+    cursor: pointer;
+  }
   #lz-dock span.site-page.group > i.fas.fa-chevron-down {
     margin-left: auto;
     transition: transform 0.25s ease;
@@ -389,7 +431,8 @@ html[data-theme='dark'] .lz-profile {
   #lz-dock .menus_item.open > span.site-page.group > i.fas.fa-chevron-down {
     transform: rotate(180deg);
   }
-  /* 子菜单：内嵌手风琴展开（覆盖主题的悬浮下拉） */
+
+  /* 子菜单：玻璃小胶囊手风琴 */
   #lz-dock .menus_item .menus_item_child {
     display: none;
     position: static !important;
@@ -397,12 +440,15 @@ html[data-theme='dark'] .lz-profile {
     box-shadow: none;
     border: none;
     border-radius: 0;
-    margin: 4px 0 4px 14px;
-    padding: 0 0 0 6px;
-    border-left: 2px solid var(--lz-mist);
+    margin: 6px 0 2px 10px;
+    padding: 0 0 0 8px;
+    border-left: 1.5px solid rgba(255, 255, 255, 0.8);
     width: auto;
     animation: none;
     min-width: 0;
+  }
+  html[data-theme='dark'] #lz-dock .menus_item .menus_item_child {
+    border-left-color: rgba(255, 255, 255, 0.18);
   }
   #lz-dock .menus_item.open .menus_item_child {
     display: block;
@@ -410,25 +456,45 @@ html[data-theme='dark'] .lz-profile {
   #lz-dock .menus_item_child li {
     list-style: none;
     width: 100%;
+    margin: 4px 0;
   }
   #lz-dock .menus_item_child a.site-page {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 9px 14px;
-    border-radius: 10px;
+    padding: 8px 13px;
+    border-radius: 12px;
     color: var(--lz-ink);
     font-size: 0.98em;
     white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
+    background: rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(12px) saturate(1.6);
+    backdrop-filter: blur(12px) saturate(1.6);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 3px 10px rgba(31, 90, 180, 0.05);
+    transition: background 0.25s ease, color 0.2s ease;
+  }
+  html[data-theme='dark'] #lz-dock .menus_item_child a.site-page {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.11);
   }
   #lz-dock .menus_item_child a.site-page:hover {
     color: var(--lz-sky);
   }
   #lz-dock .menus_item_child a.site-page.active {
-    background: var(--lz-mist);
+    background: rgba(255, 255, 255, 0.85);
     color: var(--lz-sky);
     font-weight: 600;
+  }
+  html[data-theme='dark'] #lz-dock .menus_item_child a.site-page.active {
+    background: rgba(96, 165, 250, 0.2);
+    color: var(--lz-sky);
+  }
+
+  /* 主内容区整体右移，为侧边栏让位 */
+  .layout {
+    padding-left: 200px;
+    padding-right: 8px;
   }
 }
 @media screen and (max-width: 899px) {

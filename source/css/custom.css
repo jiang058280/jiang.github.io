@@ -332,10 +332,14 @@ html[data-theme='dark'] .lz-profile {
     text-align: center;
     vertical-align: middle;
   }
-  #lz-dock .menus_item > a.site-page:hover,
-  #lz-dock .menus_item > a.active {
+  #lz-dock .menus_item > a.site-page:hover {
+    background: #F1F6FD;
+    color: var(--lz-ink);
+  }
+  #lz-dock .menus_item > a.site-page.active {
     background: var(--lz-mist);
     color: var(--lz-sky);
+    font-weight: 600;
   }
   /* 竖排模式下：悬停指示为左侧渐变竖条 */
   #lz-dock .menus_item > a.site-page::after {

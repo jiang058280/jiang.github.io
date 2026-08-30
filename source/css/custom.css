@@ -349,6 +349,26 @@ html[data-theme='dark'] .lz-profile {
   transition: none !important;
 }
 
+/* 个人简介页: 紧凑头部（姓名 + 一行签名 + 基本信息行，无背景卡片） */
+.lz-headline {
+  margin: 0 0 10px;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--lz-ink);
+  line-height: 1.4;
+}
+.lz-headline small {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 500;
+  color: var(--lz-slate);
+  margin-top: 4px;
+}
+.lz-headline + .lz-meta {
+  justify-content: flex-start;
+  margin: 0 0 6px;
+}
+
 /* 个人简介页: 基本信息行 */
 .lz-meta {
   display: flex;

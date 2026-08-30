@@ -6,20 +6,12 @@ type: about
 
 <div class="lz-about">
 
-<div class="lz-profile">
-  <img class="lz-avatar" src="/img/avatar.png" alt="刘国庆的头像">
-  <h2>刘国庆</h2>
-  <p class="lz-sign">AI 应用开发工程师 · 记录技术与生活</p>
-  <div class="lz-meta">
-    <span>💼 意向职位：<strong>AI 应用开发（Agent / RAG）</strong></span>
-    <span>📅 工作年限：<strong>一年</strong></span>
-    <span>📮 <strong>2998384205@qq.com</strong></span>
-    <span>📱 <strong>18435722256</strong></span>
-  </div>
-  <div class="lz-links">
-    <a href="https://github.com/jiang058280" target="_blank" rel="noopener">GitHub</a>
-    <a href="/atom.xml" target="_blank" rel="noopener">RSS 订阅</a>
-  </div>
+<p class="lz-headline">刘国庆<small>AI 应用开发工程师 · 记录技术与生活</small></p>
+<div class="lz-meta">
+  <span>💼 意向职位：<strong>AI 应用开发（Agent / RAG）</strong></span>
+  <span>📅 工作年限：<strong>一年</strong></span>
+  <span>📮 <strong>2998384205@qq.com</strong></span>
+  <span>📱 <strong>18435722256</strong></span>
 </div>
 
 <h2 class="lz-h">技术栈</h2>

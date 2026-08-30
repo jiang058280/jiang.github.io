@@ -257,15 +257,22 @@ html[data-theme='dark'] .lz-profile {
   }
   #lz-dock {
     position: fixed;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 176px;
     z-index: 91;
-    padding: 10px 8px;
+    padding: 20px 10px;
     background: #ffffff;
-    border: 1px solid var(--lz-mist);
-    border-radius: 14px;
-    box-shadow: 0 8px 26px rgba(16, 49, 107, 0.12);
+    border: none;
+    border-right: 1px solid var(--lz-mist);
+    border-radius: 0;
+    box-shadow: 4px 0 20px rgba(16, 49, 107, 0.06);
+    overflow-y: auto;
+  }
+  html[data-theme='dark'] #lz-dock {
+    background: rgba(23, 33, 56, 0.9);
+    border-color: rgba(46, 124, 246, 0.25);
   }
   html[data-theme='dark'] #lz-dock {
     background: rgba(23, 33, 56, 0.72);
@@ -318,9 +325,10 @@ html[data-theme='dark'] .lz-profile {
     width: 3px;
     height: 58%;
   }
-  /* 中等宽度下给主内容让出导航坞的位置 */
+  /* 主内容区整体右移，为侧边栏让位 */
   .layout {
-    padding-left: 96px;
+    padding-left: 200px;
+    padding-right: 8px;
   }
 }
 @media screen and (max-width: 899px) {

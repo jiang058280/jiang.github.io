@@ -21,9 +21,9 @@ menu:
 # 注意：修改了 custom.css / custom.js 后要把 v= 版本号 +1，浏览器才会拉新文件
 inject:
   head:
-    - <link rel="stylesheet" href="/css/custom.css?v=20260830e">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260830f">
   bottom:
-    - <script src="/js/custom.js?v=20260830e"></script>
+    - <script src="/js/custom.js?v=20260830f"></script>
 
 # 作者头像（侧边栏作者卡片）
 avatar:

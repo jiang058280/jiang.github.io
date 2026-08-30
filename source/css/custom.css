@@ -333,15 +333,15 @@ html[data-theme='dark'] .lz-profile {
     vertical-align: middle;
   }
   #lz-dock .menus_item > a.site-page:hover {
-    background: #F1F6FD;
-    color: var(--lz-ink);
+    background: transparent;
+    color: var(--lz-sky);
   }
   #lz-dock .menus_item > a.site-page.active {
     background: var(--lz-mist);
     color: var(--lz-sky);
     font-weight: 600;
   }
-  /* 竖排模式下：悬停指示为左侧渐变竖条 */
+  /* 左侧渐变竖条只跟随当前选中项，悬停不显示 */
   #lz-dock .menus_item > a.site-page::after {
     left: 0;
     top: 50%;
@@ -350,7 +350,7 @@ html[data-theme='dark'] .lz-profile {
     height: 0;
     transform: translateY(-50%);
   }
-  #lz-dock .menus_item:hover > a.site-page::after {
+  #lz-dock .menus_item > a.site-page.active::after {
     width: 3px;
     height: 58%;
   }

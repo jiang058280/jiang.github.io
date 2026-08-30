@@ -261,12 +261,12 @@ html[data-theme='dark'] .lz-profile {
     top: 50%;
     transform: translateY(-50%);
     z-index: 91;
-    padding: 16px 12px;
+    padding: 10px 8px;
     background: rgba(255, 255, 255, 0.74);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border: 1px solid var(--lz-mist);
-    border-radius: 20px;
+    border-radius: 14px;
     box-shadow: 0 8px 26px rgba(16, 49, 107, 0.12);
   }
   html[data-theme='dark'] #lz-dock {
@@ -276,7 +276,7 @@ html[data-theme='dark'] .lz-profile {
   #lz-dock .menus_items {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 2px;
     width: 100%;
   }
   #lz-dock .menus_item {
@@ -286,17 +286,16 @@ html[data-theme='dark'] .lz-profile {
   #lz-dock .menus_item > a.site-page {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 13px 18px;
-    border-radius: 13px;
+    gap: 9px;
+    padding: 8px 13px;
+    border-radius: 9px;
     color: var(--lz-ink);
-    font-size: 1.08em;
+    font-size: 0.94em;
     white-space: nowrap;
     transition: background 0.2s ease, color 0.2s ease;
   }
   #lz-dock .menus_item > a.site-page i {
-    width: 1.2em;
-    font-size: 1.12em;
+    width: 1.15em;
     text-align: center;
   }
   #lz-dock .menus_item > a.site-page:hover,

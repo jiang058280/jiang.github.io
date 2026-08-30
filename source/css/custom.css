@@ -242,6 +242,13 @@ html[data-theme='dark'] .lz-profile {
   background: var(--lz-grad);
 }
 
+/* ---------- 桌面端隐藏整条顶栏（菜单在左侧导航坞，标题已按需移除） ---------- */
+@media screen and (min-width: 900px) {
+  #nav {
+    display: none !important;
+  }
+}
+
 /* ---------- 左侧竖列导航坞（桌面端） ---------- */
 @media screen and (min-width: 900px) {
   /* 隐藏顶栏里的原菜单，导航由 body 根节点下的 #lz-dock 接管（custom.js 克隆生成） */

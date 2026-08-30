@@ -2,6 +2,10 @@
 # 只把需要自定义的项写在这里即可覆盖主题默认值
 # 完整配置项文档: https://butterfly.js.org
 
+# 顶部导航栏：不显示站点标题（桌面端整条顶栏隐藏，见 custom.css）
+nav:
+  display_title: false
+
 # 导航菜单（左侧导航坞由此生成）
 menu:
   首页: / || fas fa-home

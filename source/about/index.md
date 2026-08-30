@@ -7,8 +7,8 @@ type: about
 <div class="lz-about">
 
 <div class="lz-profile">
-  <img class="lz-avatar" src="/img/avatar.svg" alt="LGQ 的头像">
-  <h2>LGQ</h2>
+  <img class="lz-avatar" src="/img/avatar.png" alt="刘国庆的头像">
+  <h2>刘国庆</h2>
   <p class="lz-sign">把想法写成文字，把时间变成文章。</p>
   <div class="lz-links">
     <a href="https://github.com/jiang058280" target="_blank" rel="noopener">GitHub</a>

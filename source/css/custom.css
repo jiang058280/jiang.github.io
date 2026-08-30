@@ -244,8 +244,11 @@ html[data-theme='dark'] .lz-profile {
 
 /* ---------- 左侧竖列导航坞（桌面端） ---------- */
 @media screen and (min-width: 900px) {
-  /* 把顶部栏里的菜单改成左侧悬浮玻璃坞 */
+  /* 隐藏顶栏里的原菜单，导航由 body 根节点下的 #lz-dock 接管（custom.js 克隆生成） */
   #nav #menus {
+    display: none;
+  }
+  #lz-dock {
     position: fixed;
     left: 16px;
     top: 50%;
@@ -259,20 +262,21 @@ html[data-theme='dark'] .lz-profile {
     border-radius: 18px;
     box-shadow: 0 8px 26px rgba(16, 49, 107, 0.12);
   }
-  html[data-theme='dark'] #nav #menus {
+  html[data-theme='dark'] #lz-dock {
     background: rgba(23, 33, 56, 0.72);
     border-color: rgba(46, 124, 246, 0.25);
   }
-  #nav #menus .menus_items {
+  #lz-dock .menus_items {
     display: flex;
     flex-direction: column;
     gap: 4px;
     width: 100%;
   }
-  #nav #menus .menus_item {
+  #lz-dock .menus_item {
     width: 100%;
+    list-style: none;
   }
-  #nav #menus .menus_item > a.site-page {
+  #lz-dock .menus_item > a.site-page {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -282,17 +286,17 @@ html[data-theme='dark'] .lz-profile {
     white-space: nowrap;
     transition: background 0.2s ease, color 0.2s ease;
   }
-  #nav #menus .menus_item > a.site-page i {
+  #lz-dock .menus_item > a.site-page i {
     width: 1.1em;
     text-align: center;
   }
-  #nav #menus .menus_item > a.site-page:hover,
-  #nav #menus .menus_item > a.active {
+  #lz-dock .menus_item > a.site-page:hover,
+  #lz-dock .menus_item > a.active {
     background: var(--lz-mist);
     color: var(--lz-sky);
   }
-  /* 竖排模式下：悬停指示从下划线改为左侧渐变竖条 */
-  #nav #menus .menus_item > a.site-page::after {
+  /* 竖排模式下：悬停指示为左侧渐变竖条 */
+  #lz-dock .menus_item > a.site-page::after {
     left: 0;
     top: 50%;
     bottom: auto;
@@ -300,13 +304,18 @@ html[data-theme='dark'] .lz-profile {
     height: 0;
     transform: translateY(-50%);
   }
-  #nav #menus .menus_item:hover > a.site-page::after {
+  #lz-dock .menus_item:hover > a.site-page::after {
     width: 3px;
     height: 58%;
   }
   /* 中等宽度下给主内容让出导航坞的位置 */
   .layout {
     padding-left: 96px;
+  }
+}
+@media screen and (max-width: 899px) {
+  #lz-dock {
+    display: none;
   }
 }
 

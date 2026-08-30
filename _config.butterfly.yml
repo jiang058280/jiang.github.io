@@ -14,11 +14,16 @@ menu:
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
+  bottom:
+    - <script src="/js/custom.js"></script>
 
-# 顶部横幅：全站统一使用本地绘制的晴空光带（无外链图片）
-index_img: /img/hero.svg
-default_top_img: /img/hero.svg
-index_top_img_height: 420px
+# 作者头像（侧边栏作者卡片）
+avatar:
+  img: /img/avatar.png
+  effect: false
+
+# 顶部横幅：已按要求全部禁用（disable_top_img 优先级最高）
+disable_top_img: true
 
 # 首页副标题打字机效果
 subtitle:

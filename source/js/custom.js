@@ -17,6 +17,7 @@
       '</div>' +
       items.outerHTML;
     document.body.appendChild(dock);
+    refreshDockActive();
   }
 
   if (document.readyState === 'loading') {
@@ -29,10 +30,19 @@
   function refreshDockActive() {
     var links = document.querySelectorAll('#lz-dock .menus_item > a');
     var path = location.pathname;
+    var rootTaken = false; // 多个入口指向首页时（首页/最新文章），只高亮「首页」
     links.forEach(function (a) {
       var href = a.getAttribute('href') || '/';
-      var active = href === '/' ? path === '/' : path.indexOf(href) === 0;
-      a.classList.toggle('active', active);
+      var isActive = false;
+      if (href === '/') {
+        if (!rootTaken && path === '/') {
+          isActive = true;
+          rootTaken = true;
+        }
+      } else {
+        isActive = path.indexOf(href) === 0;
+      }
+      a.classList.toggle('active', isActive);
     });
   }
   document.addEventListener('pjax:complete', refreshDockActive);

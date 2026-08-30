@@ -504,6 +504,343 @@ html[data-theme='dark'] .lz-profile {
   }
 }
 
+
+/* ---------- 个人简介页 · 科幻档案布局 ---------- */
+/* 全宽模式：隐藏右侧栏，页卡透明，铺网格底纹 */
+body.lz-about-full #aside-content {
+  display: none;
+}
+body.lz-about-full .layout {
+  padding-right: 8px;
+}
+body.lz-about-full #page {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 8px;
+}
+body.lz-about-full {
+  background-color: #F6F9FF;
+  background-image:
+    linear-gradient(rgba(46, 124, 246, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 124, 246, 0.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+html[data-theme='dark'] body.lz-about-full {
+  background-color: transparent;
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+}
+body.lz-about-full .lz-about {
+  max-width: 1040px;
+}
+
+/* HUD 面板通用：细蓝框 + 双角括号 */
+.lz-sf .lz-sf-hero,
+.lz-sf .lz-sf-module,
+.lz-sf .lz-sf-mission {
+  position: relative;
+  border: 1px solid rgba(46, 124, 246, 0.28);
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: 24px 28px;
+  margin: 18px 0;
+}
+html[data-theme='dark'] .lz-sf .lz-sf-hero,
+html[data-theme='dark'] .lz-sf .lz-sf-module,
+html[data-theme='dark'] .lz-sf .lz-sf-mission {
+  border-color: rgba(96, 165, 250, 0.3);
+  background: rgba(23, 33, 56, 0.55);
+}
+.lz-sf .lz-sf-corner.tl,
+.lz-sf .lz-sf-corner.br {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+.lz-sf .lz-sf-corner.tl {
+  left: -1px;
+  top: -1px;
+  border-left: 2.5px solid var(--lz-sky);
+  border-top: 2.5px solid var(--lz-sky);
+}
+.lz-sf .lz-sf-corner.br {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2.5px solid var(--lz-aqua);
+  border-bottom: 2.5px solid var(--lz-aqua);
+}
+.lz-sf .lz-sf-mission::before,
+.lz-sf .lz-sf-mission::after,
+.lz-sf .lz-sf-module::before,
+.lz-sf .lz-sf-module::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.lz-sf .lz-sf-mission::before,
+.lz-sf .lz-sf-module::before {
+  left: -1px;
+  top: -1px;
+  border-left: 2px solid var(--lz-sky);
+  border-top: 2px solid var(--lz-sky);
+}
+.lz-sf .lz-sf-mission::after,
+.lz-sf .lz-sf-module::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid var(--lz-aqua);
+  border-bottom: 2px solid var(--lz-aqua);
+}
+
+/* 小节标题的科幻副标 */
+.lz-sf .lz-sf-sec {
+  margin-left: 12px;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.55em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--lz-aqua);
+  vertical-align: middle;
+}
+
+/* HERO 档案抬头 */
+.lz-sf .lz-sf-hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 30px 34px;
+}
+.lz-sf .lz-sf-eyebrow {
+  margin: 0 0 8px;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.78em;
+  letter-spacing: 0.22em;
+  color: var(--lz-aqua);
+}
+.lz-sf .lz-sf-name {
+  margin: 0 0 10px;
+  font-size: 2.2em;
+  font-weight: 800;
+  color: var(--lz-ink);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+}
+.lz-sf .lz-sf-role {
+  margin: 0;
+  color: var(--lz-slate);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.lz-sf .lz-sf-role b {
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--lz-sky);
+}
+.lz-sf .lz-sf-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #2ECC71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.18), 0 0 10px rgba(46, 204, 113, 0.6);
+  animation: lz-pulse 1.6s ease-in-out infinite;
+}
+@keyframes lz-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.lz-sf .lz-sf-hero-r {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  min-width: 300px;
+}
+.lz-sf .lz-sf-hero-r > div {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.lz-sf .lz-sf-hero-r .k {
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.74em;
+  letter-spacing: 0.1em;
+  color: var(--lz-aqua);
+  min-width: 110px;
+}
+.lz-sf .lz-sf-hero-r .v {
+  color: var(--lz-ink);
+  font-size: 0.94em;
+  font-weight: 600;
+}
+@media (max-width: 760px) {
+  .lz-sf .lz-sf-hero-r {
+    min-width: 0;
+  }
+}
+
+/* 技术栈模块 */
+.lz-sf .lz-sf-module {
+  padding: 18px 24px;
+}
+.lz-sf .lz-sf-mod {
+  margin: 0 0 12px;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.82em;
+  letter-spacing: 0.12em;
+  color: var(--lz-sky);
+  font-weight: 600;
+}
+.lz-sf .lz-chips span {
+  background: rgba(46, 124, 246, 0.06);
+  border: 1px solid rgba(46, 124, 246, 0.22);
+  color: var(--lz-ink);
+  border-radius: 3px;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.86em;
+  padding: 4px 10px;
+  transition: all 0.2s ease;
+}
+.lz-sf .lz-chips span:hover {
+  background: rgba(46, 124, 246, 0.14);
+  border-color: var(--lz-sky);
+  color: var(--lz-sky);
+  transform: translateY(-1px);
+}
+html[data-theme='dark'] .lz-sf .lz-chips span {
+  background: rgba(96, 165, 250, 0.08);
+  border-color: rgba(96, 165, 250, 0.3);
+  color: var(--lz-ink);
+}
+
+/* 项目卡（MISSION） */
+.lz-sf .lz-sf-mission h3 {
+  margin: 0 0 10px;
+  font-size: 1.18em;
+  color: var(--lz-ink);
+}
+.lz-sf .lz-sf-mission-tag {
+  display: inline-block;
+  margin: 0 0 8px;
+  padding: 3px 10px;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.76em;
+  letter-spacing: 0.16em;
+  color: var(--lz-sky);
+  border: 1px solid rgba(46, 124, 246, 0.35);
+  background: rgba(46, 124, 246, 0.07);
+}
+.lz-sf .lz-sf-pbg {
+  color: var(--lz-slate);
+  line-height: 1.8;
+  margin: 0 0 6px;
+}
+.lz-sf .lz-sf-pbg b {
+  color: var(--lz-ink);
+}
+.lz-sf .lz-sf-mission ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.lz-sf .lz-sf-mission li {
+  margin: 8px 0;
+  line-height: 1.75;
+  color: var(--lz-ink);
+}
+.lz-sf .lz-sf-mission li b {
+  color: var(--lz-sky);
+}
+
+/* 成果高亮框（HUD 警报条风格） */
+.lz-sf .lz-result {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: linear-gradient(90deg, rgba(46, 124, 246, 0.1), rgba(31, 195, 220, 0.06));
+  border-left: 3px solid var(--lz-sky);
+  border-radius: 0;
+  line-height: 1.75;
+  color: var(--lz-ink);
+}
+.lz-sf .lz-result b {
+  color: var(--lz-sky);
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+}
+
+/* 终端窗口（自我评价） */
+.lz-sf .lz-sf-term {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(16, 49, 107, 0.4);
+  box-shadow: 0 10px 30px rgba(16, 49, 107, 0.18);
+}
+.lz-sf .lz-sf-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #101A30;
+}
+.lz-sf .lz-sf-term-bar i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FF5F57;
+}
+.lz-sf .lz-sf-term-bar i:nth-child(2) {
+  background: #FEBC2E;
+}
+.lz-sf .lz-sf-term-bar i:nth-child(3) {
+  background: #28C840;
+}
+.lz-sf .lz-sf-term-bar span {
+  margin-left: 8px;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.78em;
+  color: #7EA6E0;
+}
+.lz-sf .lz-sf-term-body {
+  background: #0B1526;
+  padding: 16px 20px;
+}
+.lz-sf .lz-sf-term-body p {
+  margin: 6px 0;
+  font-family: Consolas, 'SF Mono', 'Courier New', monospace;
+  font-size: 0.9em;
+  line-height: 1.8;
+  color: #C9DCF5;
+}
+.lz-sf .lz-sf-term-body .p {
+  color: var(--lz-aqua);
+  font-weight: 700;
+}
+.lz-sf .lz-sf-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  margin-left: 4px;
+  background: var(--lz-aqua);
+  vertical-align: text-bottom;
+  animation: lz-blink 1s steps(1) infinite;
+}
+@keyframes lz-blink {
+  50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lz-sf .lz-sf-dot,
+  .lz-sf .lz-sf-cursor {
+    animation: none;
+  }
+}
+
 /* ---------- 页脚整体隐藏（版权行与框架行已通过配置关闭，这里兜底） ---------- */
 #footer {
   display: none !important;

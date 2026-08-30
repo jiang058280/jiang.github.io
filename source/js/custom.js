@@ -34,11 +34,17 @@
     refreshDockActive();
   }
 
+  // 个人简介页启用全宽科幻布局（隐藏右侧栏，内容占满）
+  function applyPageClass() {
+    document.body.classList.toggle('lz-about-full', location.pathname.indexOf('/about') === 0);
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', buildDock);
   } else {
     buildDock();
   }
+  document.addEventListener('DOMContentLoaded', applyPageClass);
 
   // pjax 切换页面后，按当前路径刷新高亮；子项高亮时自动展开其父菜单
   function refreshDockActive() {
@@ -66,5 +72,8 @@
       }
     });
   }
-  document.addEventListener('pjax:complete', refreshDockActive);
+  document.addEventListener('pjax:complete', function () {
+    applyPageClass();
+    refreshDockActive();
+  });
 })();

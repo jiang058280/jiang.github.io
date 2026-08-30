@@ -10,41 +10,41 @@ type: about
   <div class="lz-sf-corner tl"></div>
   <div class="lz-sf-corner br"></div>
   <div class="lz-sf-hero-l">
-    <p class="lz-sf-eyebrow">SYSTEM PROFILE // LGQ-2026</p>
+    <p class="lz-sf-eyebrow">个人档案 · LGQ-2026</p>
     <h1 class="lz-sf-name">刘国庆</h1>
-    <p class="lz-sf-role"><span class="lz-sf-dot"></span>AI 应用开发工程师 · <b>ONLINE</b></p>
+    <p class="lz-sf-role"><span class="lz-sf-dot"></span>AI 应用开发工程师 · 在线</p>
   </div>
   <div class="lz-sf-hero-r">
-    <div><span class="k">TARGET_ROLE</span><span class="v">AI 应用开发（Agent / RAG）</span></div>
-    <div><span class="k">EXPERIENCE</span><span class="v">1 年</span></div>
-    <div><span class="k">FOCUS</span><span class="v">Agent · RAG · 多智能体协同</span></div>
+    <div><span class="k">意向职位</span><span class="v">AI 应用开发（Agent / RAG）</span></div>
+    <div><span class="k">工作年限</span><span class="v">1 年</span></div>
+    <div><span class="k">研究方向</span><span class="v">Agent · RAG · 多智能体协同</span></div>
   </div>
 </div>
 
-<h2 class="lz-h">技术栈<span class="lz-sf-sec">// TECH STACK</span></h2>
+<h2 class="lz-h">技术栈</h2>
 
 <div class="lz-sf-module">
-  <p class="lz-sf-mod">MODULE-01 · 深度学习与 NLP 模型开发</p>
+  <p class="lz-sf-mod">模块 01 · 深度学习与 NLP 模型开发</p>
   <div class="lz-chips">
     <span>PyTorch</span><span>Transformer</span><span>BERT</span><span>迁移学习</span><span>LoRA / QLoRA 轻量化微调</span><span>文本清洗与数据去重</span><span>标签体系搭建</span><span>模型评估（准确率 / 召回率 / F1）</span>
   </div>
 </div>
 
 <div class="lz-sf-module">
-  <p class="lz-sf-mod">MODULE-02 · 大模型与 Agent 应用开发</p>
+  <p class="lz-sf-mod">模块 02 · 大模型与 Agent 应用开发</p>
   <div class="lz-chips">
     <span>Coze</span><span>Dify</span><span>提示词工程</span><span>Function Calling</span><span>ReAct</span><span>LangChain</span><span>LangGraph</span><span>LlamaIndex</span><span>LangSmith</span><span>Langfuse</span><span>MCP / A2A 协议</span><span>多智能体协同</span>
   </div>
 </div>
 
 <div class="lz-sf-module">
-  <p class="lz-sf-mod">MODULE-03 · 编程语言与数据库</p>
+  <p class="lz-sf-mod">模块 03 · 编程语言与数据库</p>
   <div class="lz-chips">
     <span>Python</span><span>FastAPI</span><span>Flask</span><span>Streamlit</span><span>MySQL</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Claude Code</span><span>Codex</span>
   </div>
 </div>
 
-<h2 class="lz-h">工作经历<span class="lz-sf-sec">// WORK EXPERIENCE</span></h2>
+<h2 class="lz-h">工作经历</h2>
 
 <ul class="lz-timeline">
   <li>
@@ -53,10 +53,10 @@ type: about
   </li>
 </ul>
 
-<h2 class="lz-h">项目经历<span class="lz-sf-sec">// MISSION LOG</span></h2>
+<h2 class="lz-h">项目经历</h2>
 
 <div class="lz-sf-mission">
-  <p class="lz-sf-mission-tag">MISSION-01</p>
+  <p class="lz-sf-mission-tag">项目 01</p>
   <h3>智慧教研平台 — AI 智能试题录入系统</h3>
   <p class="lz-sf-pbg"><b>项目背景：</b>平台面向全市中小学校，是题库自动化建设项目。客户反馈人工录题慢，一道题从输入到标注要几分钟；更麻烦的是标注口径不统一，不同老师对学科、题型、知识点的理解不一样，标出来的结果很乱，后续智能组卷和学情分析根本用不上。项目立项做 AI 自动录入，把标注标准化、自动化。</p>
   <ul>
@@ -71,7 +71,7 @@ type: about
 </div>
 
 <div class="lz-sf-mission">
-  <p class="lz-sf-mission-tag">MISSION-02</p>
+  <p class="lz-sf-mission-tag">项目 02</p>
   <h3>智能工单系统</h3>
   <p class="lz-sf-pbg"><b>项目背景：</b>公司客服团队新人培训周期长，老客服回答口径不统一、响应不及时，客户等待时间长。项目搭建智能工单系统，接入公司内部知识库，让 AI 根据客户问题自动生成规范答复。</p>
   <ul>
@@ -85,16 +85,15 @@ type: about
   </div>
 </div>
 
-<h2 class="lz-h">自我评价<span class="lz-sf-sec">// SUMMARY</span></h2>
+<h2 class="lz-h">自我评价</h2>
 
-<div class="lz-sf-term">
-  <div class="lz-sf-term-bar"><i></i><i></i><i></i><span>liuguoliqing@ai-dev:~$</span></div>
-  <div class="lz-sf-term-body">
-    <p><span class="p">&gt;</span> 一年 AI 开发经验，完整参与过一个上线项目从模型训练到部署的全流程。</p>
-    <p><span class="p">&gt;</span> 习惯先把需求拆清楚再动手，遇到问题倾向查文档、读源码自己解决。</p>
-    <p><span class="p">&gt;</span> 业余持续跟进 Agent 应用开发，用 Dify 做过个人项目练手。</p>
-    <p><span class="p">&gt;</span> 期待在 AI 应用开发方向长期深耕。<span class="lz-sf-cursor"></span></p>
-  </div>
+<div class="lz-sf-mission">
+  <ul>
+    <li><b>开发经验：</b>一年 AI 开发经验，完整参与过一个上线项目从模型训练到部署的全流程。</li>
+    <li><b>做事风格：</b>习惯先把需求拆清楚再动手，遇到问题倾向查文档、读源码自己解决。</li>
+    <li><b>持续学习：</b>业余持续跟进 Agent 应用开发，用 Dify 做过个人项目练手。</li>
+    <li><b>职业目标：</b>期待在 AI 应用开发方向长期深耕。</li>
+  </ul>
 </div>
 
 </div>

@@ -1,10 +1,12 @@
-// 构建时生成全站内容索引，供左侧导航坞动态列出文章标题
+// 构建时生成全站内容索引（含文章所属分类），供左侧导航坞按分类分组动态列出
 hexo.extend.generator.register('content-index', function (locals) {
   var posts = locals.posts.sort('-date').map(function (p) {
+    var cats = (p.categories && p.categories.length) ? p.categories.map(function (c) { return c.name; }) : [];
     return {
       title: p.title || '无标题',
       url: '/' + p.path,
-      date: p.date ? p.date.format('YYYY-MM-DD') : ''
+      date: p.date ? p.date.format('YYYY-MM-DD') : '',
+      categories: cats
     };
   });
   var categories = locals.categories.map(function (c) {

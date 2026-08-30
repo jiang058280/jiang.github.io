@@ -2,13 +2,12 @@
  * LGQ的博客 · 左侧竖列导航坞
  * 桌面端(≥900px)把顶栏菜单克隆到 body 根节点做左侧悬浮坞，
  * 脱离 #nav 的 transform 影响（Butterfly 滚动时会变换顶栏，fixed 子元素会失效）。
- * 支持「文章」父子菜单：点击父项展开/收起子项；
- * 子菜单中的文章列表由构建时生成的 content-index.json 动态填充。
+ * 支持「文章」父子菜单与按分类分组的动态文章列表：
+ * 分类 → 子分类标签 → 各分类下的文章标题（构建时生成的 content-index.json 驱动）。
  */
 (function () {
   var dock = null;
   var lastClicked = null; // 记录用户实际点击的入口元素
-  var contentIndex = null;
 
   function buildDock() {
     if (document.getElementById('lz-dock')) return;
@@ -22,7 +21,7 @@
       '<div><div class="lz-name">刘国庆</div><div class="lz-sub">个人博客</div></div>' +
       '</div>' +
       items.outerHTML;
-    // 点击处理：父项（无链接的 group）切换展开；子链接记录用于高亮
+    // 点击处理：所有 group 父项切换展开；顶级子链接记录用于高亮
     dock.addEventListener('click', function (e) {
       var group = e.target.closest('span.site-page.group');
       if (group) {
@@ -37,33 +36,59 @@
     loadContentIndex();
   }
 
-  // 拉取构建时生成的全站内容索引，把文章标题动态插入「文章」子菜单
+  // 拉取构建时生成的全站内容索引
   function loadContentIndex() {
     fetch('/content-index.json')
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        contentIndex = data;
-        insertPostList();
+        buildCategoryTree(data);
       })
       .catch(function () { /* 索引不可用时静默降级 */ });
   }
 
-  function insertPostList() {
-    if (!dock || !contentIndex) return;
-    var ul = dock.querySelector('.menus_item .menus_item_child');
-    if (!ul || ul.querySelector('.lz-post-item')) return;
-    var posts = contentIndex.posts || [];
-    if (!posts.length) return;
-    var divider = document.createElement('li');
-    divider.innerHTML = '<div class="lz-menu-divider"></div>';
-    ul.appendChild(divider);
-    posts.forEach(function (p) {
-      var li = document.createElement('li');
-      li.innerHTML =
-        '<a class="site-page child lz-post-item" href="' + p.url + '">' +
-        '<span> ' + p.title + '</span></a>';
-      ul.appendChild(li);
+  // 把「分类」入口改造成可展开的分组树：分类 → 子分类标签 → 文章标题
+  function buildCategoryTree(data) {
+    if (!dock) return;
+    var catLink = dock.querySelector('.menus_item_child a[href="/categories/"]');
+    if (!catLink) return;
+    var item = catLink.parentElement; // div.menus_item
+    var groups = {};
+    var noCat = [];
+    (data.posts || []).forEach(function (p) {
+      var cat = (p.categories && p.categories.length) ? p.categories[0] : '未分类';
+      (groups[cat] = groups[cat] || []).push(p);
     });
+    var catNames = Object.keys(groups);
+    // 没有任何分类化内容时保持原样
+    if (!catNames.length || (catNames.length === 1 && catNames[0] === '未分类' && groups['未分类'].length === 0)) return;
+
+    item.classList.add('lz-cat-root', 'open');
+    item.innerHTML =
+      '<span class="site-page group"><i class="fa-fw fas fa-folder"></i><span> 分类</span><i class="fas fa-chevron-down"></i></span>' +
+      '<ul class="lz-cat-child"></ul>';
+    var childUl = item.querySelector('.lz-cat-child');
+
+    catNames.forEach(function (cat) {
+      var catLi = document.createElement('li');
+      catLi.className = 'lz-cat-item';
+      catLi.innerHTML =
+        '<span class="site-page group lz-cat-group"><span> ' + cat + '</span><i class="fas fa-chevron-down"></i></span>' +
+        '<ul class="lz-cat-posts"></ul>';
+      var postsUl = catLi.querySelector('.lz-cat-posts');
+      groups[cat].forEach(function (p) {
+        var li = document.createElement('li');
+        li.innerHTML =
+          '<a class="site-page child lz-post-item" href="' + p.url + '"><span> ' + p.title + '</span></a>';
+        postsUl.appendChild(li);
+      });
+      childUl.appendChild(catLi);
+    });
+
+    // 分类页入口保留：分组树末尾补一个「全部分类」链接
+    var allLi = document.createElement('li');
+    allLi.innerHTML = '<a class="site-page child lz-allcat" href="/categories/"><span> 全部分类</span></a>';
+    childUl.appendChild(allLi);
+
     refreshDockActive();
   }
 
@@ -79,7 +104,7 @@
   }
   document.addEventListener('DOMContentLoaded', applyPageClass);
 
-  // pjax 切换页面后，按当前路径刷新高亮；子项高亮时自动展开其父菜单
+  // pjax 切换页面后，按当前路径刷新高亮；高亮项的所有祖先分组自动展开
   function refreshDockActive() {
     if (!dock) return;
     var links = dock.querySelectorAll('.menus_item > a, .menus_item_child a');
@@ -100,8 +125,14 @@
       if (href === '/') seenRoot = true;
       a.classList.toggle('active', isActive);
       if (isActive) {
-        var ul = a.closest('.menus_item_child');
-        if (ul) ul.parentElement.classList.add('open');
+        var el = a;
+        while (el && el !== dock) {
+          if (el.classList) {
+            if (el.classList.contains('menus_item')) el.classList.add('open');
+            if (el.classList.contains('lz-cat-item')) el.classList.add('open');
+          }
+          el = el.parentElement;
+        }
       }
     });
   }

@@ -6,24 +6,24 @@
 nav:
   display_title: false
 
-# 导航菜单（左侧导航坞由此生成）
+# 导航菜单（左侧导航坞由此生成）——图标选用了视觉重量均匀的一组
 menu:
-  首页: / || fas fa-home
-  最新文章: / || fas fa-clock
-  归档: /archives/ || fas fa-archive
-  标签: /tags/ || fas fa-tags
-  分类: /categories/ || fas fa-folder-open
-  公告: /announcement/ || fas fa-bullhorn
-  网站信息: /site-info/ || fas fa-chart-line
-  关于: /about/ || fas fa-heart
+  首页: / || fas fa-house
+  最新文章: / || fas fa-file-lines
+  归档: /archives/ || fas fa-box-archive
+  标签: /tags/ || fas fa-tag
+  分类: /categories/ || fas fa-folder
+  公告: /announcement/ || fas fa-bell
+  网站信息: /site-info/ || fas fa-circle-info
+  关于: /about/ || fas fa-user
 
 # 自定义样式与脚本注入（不改主题源码，升级主题不受影响）
 # 注意：修改了 custom.css / custom.js 后要把 v= 版本号 +1，浏览器才会拉新文件
 inject:
   head:
-    - <link rel="stylesheet" href="/css/custom.css?v=20260830d">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260830e">
   bottom:
-    - <script src="/js/custom.js?v=20260830d"></script>
+    - <script src="/js/custom.js?v=20260830e"></script>
 
 # 作者头像（侧边栏作者卡片）
 avatar:

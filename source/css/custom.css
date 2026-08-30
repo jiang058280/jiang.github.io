@@ -260,10 +260,10 @@ html[data-theme='dark'] .lz-profile {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 176px;
+    width: 200px;
     z-index: 91;
     padding: 16px 10px;
-    background: linear-gradient(178deg, #D8E9FF 0%, #E9F4FF 40%, #F2FAFF 100%);
+    background: #ffffff;
     border: none;
     border-right: 1px solid rgba(255, 255, 255, 0.8);
     border-radius: 0;
@@ -274,6 +274,7 @@ html[data-theme='dark'] .lz-profile {
   /* 液态光斑：玻璃后面的流动色彩 */
   #lz-dock::before,
   #lz-dock::after {
+    display: none;
     content: '';
     position: absolute;
     border-radius: 50%;
@@ -362,7 +363,7 @@ html[data-theme='dark'] .lz-profile {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 15px;
+    padding: 13px 16px;
     border-radius: 15px;
     color: var(--lz-ink);
     font-size: 1.05em;
@@ -391,7 +392,7 @@ html[data-theme='dark'] .lz-profile {
   /* 悬停：玻璃变亮，无背景突变 */
   #lz-dock .menus_item > a.site-page:hover,
   #lz-dock span.site-page.group:hover {
-    background: rgba(255, 255, 255, 0.62);
+    background: #F2F7FE;
     color: var(--lz-sky);
   }
   html[data-theme='dark'] #lz-dock .menus_item > a.site-page:hover,
@@ -493,7 +494,7 @@ html[data-theme='dark'] .lz-profile {
 
   /* 主内容区整体右移，为侧边栏让位 */
   .layout {
-    padding-left: 200px;
+    padding-left: 224px;
     padding-right: 8px;
   }
 }

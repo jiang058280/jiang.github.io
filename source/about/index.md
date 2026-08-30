@@ -17,23 +17,37 @@ type: about
 <h2 class="lz-h">技术栈</h2>
 
 <div class="lz-tech-group">
-  <p class="lz-tech-title">深度学习与 NLP</p>
+  <p class="lz-tech-title">编程语言</p>
   <div class="lz-chips">
-    <span>PyTorch</span><span>Transformer</span><span>BERT</span><span>LoRA / QLoRA 微调</span><span>ONNX 推理优化</span><span>文本分类 / 多任务学习</span><span>SimHash 查重</span>
+    <span>Python</span><span>FastAPI</span><span>Flask</span><span>Streamlit</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span>
   </div>
 </div>
 
 <div class="lz-tech-group">
-  <p class="lz-tech-title">大模型与 Agent 开发</p>
+  <p class="lz-tech-title">深度学习与 NLP 模型开发</p>
   <div class="lz-chips">
-    <span>Dify</span><span>Coze</span><span>LangChain</span><span>LangGraph</span><span>LlamaIndex</span><span>RAG 检索增强</span><span>Function Calling</span><span>ReAct</span><span>MCP / A2A 协议</span><span>提示词工程</span><span>LangSmith / Langfuse</span>
+    <span>PyTorch</span><span>Transformer</span><span>BERT</span><span>迁移学习</span><span>LoRA / QLoRA 轻量化微调</span><span>文本清洗与数据去重</span><span>标签体系搭建</span><span>模型评估（准确率 / 召回率 / F1）</span>
   </div>
 </div>
 
 <div class="lz-tech-group">
-  <p class="lz-tech-title">语言与服务</p>
+  <p class="lz-tech-title">大模型与 Agent 应用开发</p>
   <div class="lz-chips">
-    <span>Python</span><span>FastAPI</span><span>Flask</span><span>Streamlit</span><span>MySQL</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span><span>Claude Code / Codex</span>
+    <span>Coze</span><span>Dify</span><span>提示词工程</span><span>Function Calling</span><span>ReAct</span><span>LangChain</span><span>LangGraph</span><span>LlamaIndex</span><span>LangSmith</span><span>Langfuse</span><span>MCP / A2A 协议</span><span>多智能体协同</span>
+  </div>
+</div>
+
+<div class="lz-tech-group">
+  <p class="lz-tech-title">数据库</p>
+  <div class="lz-chips">
+    <span>MySQL</span>
+  </div>
+</div>
+
+<div class="lz-tech-group">
+  <p class="lz-tech-title">AI 开发辅助工具</p>
+  <div class="lz-chips">
+    <span>Claude Code</span><span>Codex</span>
   </div>
 </div>
 
@@ -50,10 +64,7 @@ type: about
 
 <div class="lz-project">
   <h3>智慧教研平台 — AI 智能试题录入系统</h3>
-  <p class="lz-sub">数据与标签体系 · 多任务模型 · 查重 · 推理优化</p>
-  <div class="lz-metrics">
-    <span>录题 3~5 分钟 → 10 秒内</span><span>效率提升 95%+</span><span>联合准确率 89.8%</span><span>上线 3 个月录入 2.4 万+ 题</span><span>覆盖 60+ 所学校</span>
-  </div>
+  <p><b>项目背景：</b>平台面向全市中小学校，是题库自动化建设项目。客户反馈人工录题慢，一道题从输入到标注要几分钟；更麻烦的是标注口径不统一，不同老师对学科、题型、知识点的理解不一样，标出来的结果很乱，后续智能组卷和学情分析根本用不上。项目立项做 AI 自动录入，把标注标准化、自动化。</p>
   <ul>
     <li><b>数据与标签体系：</b>清洗、去重并规范化历史录题语料 3.2 万余条，搭建「12 学科 / 8 题型 / 320+ 知识点」三级标签体系与统一标注规范，双人交叉标注一致率由 82% 提升至 95%。</li>
     <li><b>多任务模型训练：</b>基于 bert-base-chinese 构建共享主干 + 3 分类头架构，并行预测学科 / 题型 / 知识点，加权联合损失缓解任务冲突；5000 条人工复核测试集上三级联合准确率 89.8%，知识点 F1 较单任务基线提升 6.2pt。</li>
@@ -67,10 +78,7 @@ type: about
 
 <div class="lz-project">
   <h3>智能工单系统</h3>
-  <p class="lz-sub">Dify 工作流编排 · RAG 知识库 · 提示词工程 · 效果评估</p>
-  <div class="lz-metrics">
-    <span>回复准确率 85% → 93%</span><span>响应 10 分钟 → 30 秒</span><span>60%+ 工单自动解决</span><span>人工处理量下降约 40%</span><span>检索命中率 91%</span>
-  </div>
+  <p><b>项目背景：</b>公司客服团队新人培训周期长，老客服回答口径不统一、响应不及时，客户等待时间长。项目搭建智能工单系统，接入公司内部知识库，让 AI 根据客户问题自动生成规范答复。</p>
   <ul>
     <li><b>流程编排：</b>基于 Dify 搭建「意图识别 → 优先级判断 → RAG 检索 → 自动回复 → 人工兜底」全链路工作流，覆盖 6 类工单意图、3 级优先级，意图识别准确率 95%，优先级判定与人工一致率 92%。</li>
     <li><b>RAG 知识库建设：</b>清洗并切分公司内部文档 200+ 篇为 3000+ 语义分段，调优检索策略（top-5 召回、相似度阈值 0.7），检索命中率由 78% 提升至 91%，回复自动附带知识库来源引用。</li>

@@ -441,16 +441,14 @@ html[data-theme='dark'] .lz-profile {
     box-shadow: none;
     border: none;
     border-radius: 0;
-    margin: 6px 0 2px 10px;
-    padding: 0 0 0 8px;
-    border-left: 1.5px solid rgba(255, 255, 255, 0.8);
+    margin: 6px 0 2px 8px;
+    padding: 0;
+    border-left: none;
     width: auto;
     animation: none;
     min-width: 0;
   }
-  html[data-theme='dark'] #lz-dock .menus_item .menus_item_child {
-    border-left-color: rgba(255, 255, 255, 0.18);
-  }
+
   #lz-dock .menus_item.open .menus_item_child {
     display: block;
   }

@@ -359,6 +359,16 @@ html[data-theme='dark'] .lz-profile {
     list-style: none;
   }
 
+  /* 动态文章列表：分隔线与文章标题项 */
+  #lz-dock .lz-menu-divider {
+    height: 1px;
+    margin: 8px 6px;
+    background: rgba(46, 124, 246, 0.18);
+  }
+  #lz-dock .menus_item_child a.lz-post-item {
+    font-size: 0.92em;
+    padding: 8px 13px;
+  }
   /* 玻璃胶囊基座：菜单链接与父项共用 */
   #lz-dock .menus_item > a.site-page,
   #lz-dock span.site-page.group {

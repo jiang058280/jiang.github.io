@@ -270,6 +270,8 @@ html[data-theme='dark'] .lz-profile {
     box-shadow: 6px 0 30px rgba(31, 90, 180, 0.10);
     overflow-y: auto;
     overflow-x: hidden;
+    -webkit-user-select: none;
+    user-select: none;
   }
   /* 液态光斑：玻璃后面的流动色彩 */
   #lz-dock::before,

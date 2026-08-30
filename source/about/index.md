@@ -10,8 +10,6 @@ type: about
 <div class="lz-meta">
   <span>💼 意向职位：<strong>AI 应用开发（Agent / RAG）</strong></span>
   <span>📅 工作年限：<strong>一年</strong></span>
-  <span>📮 <strong>2998384205@qq.com</strong></span>
-  <span>📱 <strong>18435722256</strong></span>
 </div>
 
 <h2 class="lz-h">技术栈</h2>

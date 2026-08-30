@@ -10,7 +10,12 @@
     if (!items) return;
     var dock = document.createElement('div');
     dock.id = 'lz-dock';
-    dock.innerHTML = items.outerHTML;
+    dock.innerHTML =
+      '<div class="lz-brand">' +
+      '<img src="/img/avatar.png" alt="刘国庆的头像">' +
+      '<div><div class="lz-name">刘国庆</div><div class="lz-sub">个人博客</div></div>' +
+      '</div>' +
+      items.outerHTML;
     document.body.appendChild(dock);
   }
 

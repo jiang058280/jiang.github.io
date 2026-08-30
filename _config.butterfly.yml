@@ -39,8 +39,25 @@ subtitle:
 # 文章卡片布局: 3 = 封面左右交替
 index_layout: 3
 
-# 页脚
+# 页脚：版权行与框架信息行全部关闭
 footer:
   owner:
-    enable: true
-  custom_text:
+    enable: false
+  copyright:
+    enable: false
+
+# 侧边栏：只保留作者卡片，其余卡片全部关闭（内容已由左侧导航坞覆盖）
+aside:
+  card_author:
+    button:
+      enable: false
+  card_recent_post:
+    enable: false
+  card_categories:
+    enable: false
+  card_tags:
+    enable: false
+  card_archives:
+    enable: false
+  card_webinfo:
+    enable: false

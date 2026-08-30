@@ -1,0 +1,17 @@
+# npm 缓存（限定在项目内，避免污染用户目录）
+.npm-cache/
+
+# Hexo 构建产物与运行时文件
+public/
+.deploy_git/
+db.json
+
+# 依赖
+node_modules/
+
+# 本地工具文件
+.zcode/
+
+# 系统文件
+Thumbs.db
+.DS_Store

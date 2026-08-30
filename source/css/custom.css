@@ -281,7 +281,7 @@ html[data-theme='dark'] .lz-profile {
   #lz-dock .menus_items {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 6px;
     width: 100%;
   }
   #lz-dock .menus_item {
@@ -291,19 +291,19 @@ html[data-theme='dark'] .lz-profile {
   #lz-dock .menus_item > a.site-page {
     display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 8px 13px;
-    border-radius: 9px;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 11px;
     color: var(--lz-ink);
-    font-size: 0.94em;
+    font-size: 1.08em;
     white-space: nowrap;
     transition: background 0.2s ease, color 0.2s ease;
   }
   #lz-dock .menus_item > a.site-page i {
-    width: 1.25em;
-    height: 1.25em;
-    line-height: 1.25em;
-    font-size: 1em;
+    width: 1.35em;
+    height: 1.35em;
+    line-height: 1.35em;
+    font-size: 1.05em;
     text-align: center;
     vertical-align: middle;
   }

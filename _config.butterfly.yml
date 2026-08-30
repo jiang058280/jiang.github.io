@@ -10,21 +10,32 @@ menu:
   分类: /categories/ || fas fa-folder-open
   关于: /about/ || fas fa-heart
 
-# 站点副标题打字机效果
-subtitle:
-  enable: false
+# 自定义样式与脚本注入（不改主题源码，升级主题不受影响）
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
 
-# 文章默认封面（无图时使用的纯色渐变，不需要外部图片）
-default_top_img_height: 
+# 顶部横幅：全站统一使用本地绘制的晴空光带（无外链图片）
+index_img: /img/hero.svg
+default_top_img: /img/hero.svg
+index_top_img_height: 420px
+
+# 首页副标题打字机效果
+subtitle:
+  enable: true
+  effect: true
+  source: false
+  sub:
+    - 把想法写成文字，把时间变成文章。
+    - 记录技术与生活。
+    - 欢迎来到 LGQ 的一方天地。
+
+# 站点副标题打字机效果
+# 文章卡片布局: 3 = 封面左右交替
+index_layout: 3
 
 # 页脚
 footer:
   owner:
     enable: true
   custom_text:
-
-# 侧边栏头像不需要外链，先关闭 avatar 图片
-aside:
-  card_author:
-    avatar:
-      img: 

@@ -1,0 +1,253 @@
+/* ============================================================
+   LGQ的博客 · 设计体系「晴空与海」
+   色板: 墨蓝 #10316B | 晴空 #2E7CF6 | 青碧 #1FC3DC
+         雾蓝 #E8F1FE | 云白 #F6F9FF | 灰蓝 #5D6F8D
+   渐变: 135deg #2E7CF6 -> #1FC3DC（全站唯一的渐变语言）
+   前缀: lz- 避免与 Butterfly 主题冲突
+   ============================================================ */
+
+:root {
+  --lz-ink: #10316B;
+  --lz-sky: #2E7CF6;
+  --lz-aqua: #1FC3DC;
+  --lz-mist: #E8F1FE;
+  --lz-paper: #F6F9FF;
+  --lz-slate: #5D6F8D;
+  --lz-grad: linear-gradient(135deg, #2E7CF6 0%, #1FC3DC 100%);
+}
+
+html[data-theme='dark'] {
+  --lz-ink: #D8E4F8;
+  --lz-mist: rgba(46, 124, 246, 0.14);
+  --lz-paper: transparent;
+  --lz-slate: #93A5C4;
+}
+
+/* ---------- 全局基调 ---------- */
+body {
+  background: var(--lz-paper);
+  color: var(--lz-ink);
+}
+
+#recent-posts > .recent-post-item,
+#page, #archive, #tag, #category {
+  border-radius: 16px !important;
+}
+
+/* ---------- 首页: 顶部晴空横幅 ---------- */
+#page-header.full_page {
+  background: var(--lz-grad);
+}
+#page-header.full_page #site-info #site-title {
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 18px rgba(16, 49, 107, 0.35);
+}
+#page-header.full_page #site-subtitle {
+  text-shadow: 0 1px 12px rgba(16, 49, 107, 0.35);
+}
+/* 标题下的渐变光标线 */
+#page-header.full_page #site-subtitle::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- 首页: 文章卡片 ---------- */
+#recent-posts > .recent-post-item {
+  border: 1px solid var(--lz-mist);
+  box-shadow: 0 4px 16px rgba(16, 49, 107, 0.06);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+#recent-posts > .recent-post-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(16, 49, 107, 0.12);
+}
+#recent-posts > .recent-post-item .post_cover img,
+#recent-posts > .recent-post-item img.post_bg {
+  transition: transform 0.4s ease;
+}
+#recent-posts > .recent-post-item:hover .post_cover img,
+#recent-posts > .recent-post-item:hover img.post_bg {
+  transform: scale(1.04);
+}
+.recent-post-item .article-title {
+  color: var(--lz-ink);
+}
+.recent-post-item .article-meta a {
+  color: var(--lz-slate);
+}
+
+/* ---------- 导航: 渐变下划线 ---------- */
+#nav .menus_item:hover > .menus_item_child,
+#nav .menus_item > a {
+  border: none;
+}
+#nav .menus_item > a .menus_item_name {
+  position: relative;
+}
+#nav .menus_item > a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  width: 0;
+  height: 2.5px;
+  border-radius: 2px;
+  background: var(--lz-grad);
+  transform: translateX(-50%);
+  transition: width 0.25s ease;
+}
+#nav .menus_item:hover > a::after,
+#nav .menus_item > a.active::after {
+  width: 60%;
+}
+
+/* ---------- 徽章 / 分类标签 ---------- */
+.article-meta .article-meta__tags,
+.article-meta > a {
+  background: var(--lz-mist);
+  color: var(--lz-sky);
+  border-radius: 999px;
+  padding: 2px 10px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.article-meta .article-meta__tags:hover,
+.article-meta > a:hover {
+  background: var(--lz-sky);
+  color: #fff;
+}
+
+/* ---------- 关于页: 个人名片 ---------- */
+.lz-about {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.lz-profile {
+  text-align: center;
+  padding: 36px 24px 28px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, var(--lz-mist) 0%, rgba(232, 241, 254, 0.35) 100%);
+  border: 1px solid var(--lz-mist);
+}
+html[data-theme='dark'] .lz-profile {
+  background: var(--lz-mist);
+}
+.lz-profile .lz-avatar {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  box-shadow: 0 6px 24px rgba(46, 124, 246, 0.25);
+}
+.lz-profile h2 {
+  margin: 18px 0 6px;
+  font-size: 1.6em;
+  color: var(--lz-ink);
+}
+.lz-profile .lz-sign {
+  color: var(--lz-slate);
+  margin: 0 0 18px;
+}
+.lz-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.lz-links a {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--lz-sky);
+  color: var(--lz-sky);
+  font-size: 0.92em;
+  transition: all 0.22s ease;
+}
+.lz-links a:hover {
+  background: var(--lz-grad);
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* 关于页: 芯片组 */
+.lz-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 8px;
+}
+.lz-chips span {
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: var(--lz-mist);
+  color: var(--lz-sky);
+  font-size: 0.9em;
+}
+
+/* 关于页: 时间线 */
+.lz-timeline {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0 0 0 22px;
+  border-left: 2.5px solid var(--lz-mist);
+}
+.lz-timeline li {
+  position: relative;
+  padding: 0 0 22px 18px;
+}
+.lz-timeline li:last-child {
+  padding-bottom: 4px;
+}
+.lz-timeline li::before {
+  content: '';
+  position: absolute;
+  left: -30.5px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--lz-grad);
+  box-shadow: 0 0 0 4px var(--lz-mist);
+}
+.lz-timeline .lz-date {
+  display: block;
+  font-size: 0.85em;
+  color: var(--lz-aqua);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.lz-timeline p {
+  margin: 4px 0 0;
+}
+
+/* 关于页: 小节标题渐变短线 */
+.lz-h {
+  position: relative;
+  margin-top: 40px;
+  padding-bottom: 10px;
+  color: var(--lz-ink);
+}
+.lz-h::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46px;
+  height: 3.5px;
+  border-radius: 2px;
+  background: var(--lz-grad);
+}
+
+/* ---------- 质量底线 ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #recent-posts > .recent-post-item,
+  #recent-posts > .recent-post-item .post_cover img,
+  .lz-links a,
+  #nav .menus_item > a::after {
+    transition: none !important;
+  }
+}

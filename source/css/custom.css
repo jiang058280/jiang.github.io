@@ -25,8 +25,15 @@ html[data-theme='dark'] {
 
 /* ---------- 全局基调 ---------- */
 body {
-  background: var(--lz-paper);
+  background:
+    linear-gradient(rgba(246, 249, 255, 0.88), rgba(246, 249, 255, 0.88)),
+    url('/img/bg.webp') center / cover no-repeat fixed;
   color: var(--lz-ink);
+}
+html[data-theme='dark'] body {
+  background:
+    linear-gradient(rgba(10, 18, 38, 0.86), rgba(10, 18, 38, 0.86)),
+    url('/img/bg.webp') center / cover no-repeat fixed;
 }
 
 #recent-posts > .recent-post-item,
@@ -36,7 +43,9 @@ body {
 
 /* ---------- 首页: 顶部晴空横幅 ---------- */
 #page-header.full_page {
-  background: var(--lz-grad);
+  background:
+    linear-gradient(rgba(16, 49, 107, 0.55), rgba(16, 49, 107, 0.55)),
+    url('/img/bg.webp') center / cover no-repeat;
 }
 #page-header.full_page #site-info #site-title {
   letter-spacing: 0.04em;

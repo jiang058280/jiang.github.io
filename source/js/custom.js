@@ -41,54 +41,43 @@
     fetch('/content-index.json')
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        buildCategoryTree(data);
+        buildInterviewList(data);
         buildTagTree(data);
       })
       .catch(function () { /* 索引不可用时静默降级 */ });
   }
 
-  // 把「分类」入口改造成可展开的分组树：分类 → 子分类标签 → 文章标题
-  function buildCategoryTree(data) {
+  // 删除「文章」入口下的「分类」子菜单项，改为直接平铺渲染面试题文章标题列表
+  // 面试题列表复用 .lz-cat-posts 滚动样式与 .lz-post-item 链接样式，随「文章」展开/收起，带滚动条
+  function buildInterviewList(data) {
     if (!dock) return;
     var catLink = dock.querySelector('.menus_item_child a[href="/categories/"]');
     if (!catLink) return;
-    var item = catLink.parentElement; // div.menus_item
-    var groups = {};
-    var noCat = [];
-    (data.posts || []).forEach(function (p) {
-      var cat = (p.categories && p.categories.length) ? p.categories[0] : '未分类';
-      (groups[cat] = groups[cat] || []).push(p);
+    var childMenu = catLink.parentElement.parentElement; // ul.menus_item_child（分类/标签/归档所在）
+    var item = childMenu.parentElement; // div.menus_item（「文章」）
+    // 1. 移除「分类」子菜单项（href="/categories/"）
+    var catLi = catLink.parentElement;
+    childMenu.removeChild(catLi);
+    // 2. 从 content-index.json 的 posts 中筛选 tags 含「面试题」的文章
+    var interviewPosts = (data.posts || []).filter(function (p) {
+      return p.tags && p.tags.indexOf('面试题') !== -1;
     });
-    var catNames = Object.keys(groups);
-    // 没有任何分类化内容时保持原样
-    if (!catNames.length || (catNames.length === 1 && catNames[0] === '未分类' && groups['未分类'].length === 0)) return;
-
-    item.classList.add('lz-cat-root', 'open');
-    item.innerHTML =
-      '<span class="site-page group"><i class="fa-fw fas fa-folder"></i><span> 分类</span><i class="fas fa-chevron-down"></i></span>' +
-      '<ul class="lz-cat-child"></ul>';
-    var childUl = item.querySelector('.lz-cat-child');
-
-    catNames.forEach(function (cat) {
-      var catLi = document.createElement('li');
-      catLi.className = 'lz-cat-item';
-      catLi.innerHTML =
-        '<span class="site-page group lz-cat-group"><span> ' + cat + '</span><i class="fas fa-chevron-down"></i></span>' +
-        '<ul class="lz-cat-posts"></ul>';
-      var postsUl = catLi.querySelector('.lz-cat-posts');
-      groups[cat].forEach(function (p) {
-        var li = document.createElement('li');
-        li.innerHTML =
-          '<a class="site-page child lz-post-item" href="' + p.url + '"><span> ' + p.title + '</span></a>';
-        postsUl.appendChild(li);
-      });
-      childUl.appendChild(catLi);
+    if (!interviewPosts.length) return;
+    // 3. 在「文章」入口下直接平铺渲染（复用 .lz-cat-posts 滚动样式与 .lz-post-item 链接样式）
+    var wrapLi = document.createElement('li');
+    var ul = document.createElement('ul');
+    ul.className = 'lz-cat-posts';
+    ul.style.display = 'block';
+    ul.style.maxHeight = '420px';
+    ul.style.overflowY = 'auto';
+    interviewPosts.forEach(function (p) {
+      var li = document.createElement('li');
+      li.innerHTML =
+        '<a class="site-page child lz-post-item" href="' + p.url + '"><span> ' + p.title + '</span></a>';
+      ul.appendChild(li);
     });
-
-    // 分类页入口保留：分组树末尾补一个「全部分类」链接
-    var allLi = document.createElement('li');
-    allLi.innerHTML = '<a class="site-page child lz-allcat" href="/categories/"><span> 全部分类</span></a>';
-    childUl.appendChild(allLi);
+    wrapLi.appendChild(ul);
+    childMenu.appendChild(wrapLi);
 
     refreshDockActive();
   }

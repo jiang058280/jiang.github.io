@@ -20,9 +20,9 @@ menu:
 # 注意：修改了 custom.css / custom.js 后要把 v= 版本号 +1，浏览器才会拉新文件
 inject:
   head:
-    - <link rel="stylesheet" href="/css/custom.css?v=20260831j">
+    - <link rel="stylesheet" href="/css/custom.css?v=20260901a">
   bottom:
-    - <script src="/js/custom.js?v=20260831j"></script>
+    - <script src="/js/custom.js?v=20260901a"></script>
 
 # pjax 局部刷新：切换页面只替换内容区，不整页重载
 pjax:

@@ -2,11 +2,13 @@
 hexo.extend.generator.register('content-index', function (locals) {
   var posts = locals.posts.sort('-date').map(function (p) {
     var cats = (p.categories && p.categories.length) ? p.categories.map(function (c) { return c.name; }) : [];
+    var tags = (p.tags && p.tags.length) ? p.tags.map(function (t) { return t.name; }) : [];
     return {
       title: p.title || '无标题',
       url: '/' + p.path,
       date: p.date ? p.date.format('YYYY-MM-DD') : '',
-      categories: cats
+      categories: cats,
+      tags: tags
     };
   });
   var categories = locals.categories.map(function (c) {

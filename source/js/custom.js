@@ -42,6 +42,7 @@
       .then(function (r) { return r.json(); })
       .then(function (data) {
         buildCategoryTree(data);
+        buildTagTree(data);
       })
       .catch(function () { /* 索引不可用时静默降级 */ });
   }
@@ -87,6 +88,52 @@
     // 分类页入口保留：分组树末尾补一个「全部分类」链接
     var allLi = document.createElement('li');
     allLi.innerHTML = '<a class="site-page child lz-allcat" href="/categories/"><span> 全部分类</span></a>';
+    childUl.appendChild(allLi);
+
+    refreshDockActive();
+  }
+
+  // 把「标签」入口也改造成可展开的分组树：标签 → 子标签（如：面试题）→ 文章标题
+  // 子标签分组内文章列表同样带滚动条（见 custom.css .lz-tag-root .lz-cat-posts）
+  function buildTagTree(data) {
+    if (!dock) return;
+    var tagLink = dock.querySelector('.menus_item_child a[href="/tags/"]');
+    if (!tagLink) return;
+    var item = tagLink.parentElement; // div.menus_item
+    var groups = {};
+    (data.posts || []).forEach(function (p) {
+      var t = (p.tags && p.tags.length) ? p.tags[0] : '未分类';
+      (groups[t] = groups[t] || []).push(p);
+    });
+    var tagNames = Object.keys(groups);
+    // 没有任何标签化内容时保持原样
+    if (!tagNames.length) return;
+
+    item.classList.add('lz-cat-root', 'lz-tag-root', 'open');
+    item.innerHTML =
+      '<span class="site-page group"><i class="fa-fw fas fa-tag"></i><span> 标签</span><i class="fas fa-chevron-down"></i></span>' +
+      '<ul class="lz-cat-child"></ul>';
+    var childUl = item.querySelector('.lz-cat-child');
+
+    tagNames.forEach(function (tag) {
+      var tagLi = document.createElement('li');
+      tagLi.className = 'lz-cat-item';
+      tagLi.innerHTML =
+        '<span class="site-page group lz-cat-group"><span> ' + tag + '</span><i class="fas fa-chevron-down"></i></span>' +
+        '<ul class="lz-cat-posts"></ul>';
+      var postsUl = tagLi.querySelector('.lz-cat-posts');
+      groups[tag].forEach(function (p) {
+        var li = document.createElement('li');
+        li.innerHTML =
+          '<a class="site-page child lz-post-item" href="' + p.url + '"><span> ' + p.title + '</span></a>';
+        postsUl.appendChild(li);
+      });
+      childUl.appendChild(tagLi);
+    });
+
+    // 标签页入口保留：分组树末尾补一个「全部标签」链接
+    var allLi = document.createElement('li');
+    allLi.innerHTML = '<a class="site-page child lz-allcat" href="/tags/"><span> 全部标签</span></a>';
     childUl.appendChild(allLi);
 
     refreshDockActive();

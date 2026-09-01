@@ -389,6 +389,31 @@ html[data-theme='dark'] .lz-profile {
     transform: rotate(180deg);
   }
   #lz-dock .lz-cat-posts {
+    max-height: 232px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(46, 124, 246, 0.35) transparent;
+  }
+  /* 标签分组树（如「面试题」子标签）文章列表：更高滚动区，确保全部文档可滚动查看 */
+  #lz-dock .lz-tag-root .lz-cat-posts {
+    max-height: 340px;
+    overflow-y: auto;
+  }
+  #lz-dock .lz-cat-posts::-webkit-scrollbar {
+    width: 5px;
+  }
+  #lz-dock .lz-cat-posts::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #lz-dock .lz-cat-posts::-webkit-scrollbar-thumb {
+    background: rgba(46, 124, 246, 0.3);
+    border-radius: 4px;
+  }
+  #lz-dock .lz-cat-posts::-webkit-scrollbar-thumb:hover {
+    background: rgba(46, 124, 246, 0.55);
+  }
+  #lz-dock .lz-cat-posts {
     display: none;
     margin: 4px 0 4px 12px;
     padding: 0 0 0 8px;

@@ -260,7 +260,7 @@ html[data-theme='dark'] .lz-profile {
     left: 0;
     top: 0;
     bottom: 0;
-    width: 200px;
+    width: 240px;
     z-index: 91;
     padding: 16px 10px;
     background: #ffffff;
@@ -397,7 +397,7 @@ html[data-theme='dark'] .lz-profile {
   }
   /* 标签分组树（如「面试题」子标签）文章列表：更高滚动区，确保全部文档可滚动查看 */
   #lz-dock .lz-tag-root .lz-cat-posts {
-    max-height: 340px;
+    max-height: 420px;
     overflow-y: auto;
   }
   #lz-dock .lz-cat-posts::-webkit-scrollbar {
@@ -614,7 +614,7 @@ html[data-theme='dark'] .lz-profile {
 
   /* 主内容区整体右移，为侧边栏让位 */
   .layout {
-    padding-left: 224px;
+    padding-left: 264px;
     padding-right: 8px;
   }
 }

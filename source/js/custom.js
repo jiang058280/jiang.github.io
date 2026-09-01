@@ -71,16 +71,39 @@
     if (!interviewPosts.length) return;
     // 4. 创建「面试题」可折叠分组（复用 .site-page.group 样式），点击分组展开/收起文章列表
     var groupLi = document.createElement('li');
-    groupLi.className = 'lz-cat-item lz-tag-root';
+    groupLi.className = 'lz-cat-item lz-tag-root open';
     groupLi.innerHTML =
-      '<span class="site-page group"><i class="fa-fw fas fa-folder"></i><span> 面试题</span><i class="fas fa-chevron-down"></i></span>' +
+      '<span class="site-page group"><i class="fa-fw fas fa-folder"></i><span> 面试题（' + interviewPosts.length + '）</span><i class="fas fa-chevron-down"></i></span>' +
       '<ul class="lz-cat-posts"></ul>';
     var postsUl = groupLi.querySelector('.lz-cat-posts');
+    // 5. 按分类分组：面试题 → 类型（Python基础 / 提示词工程 / ...）→ 文章标题
+    var CAT_ORDER = ['Python基础', '面向对象编程', '正则表达式', '闭包与装饰器', '多线程、多进程、多协程', 'Socket网络编程', 'MySql', 'Redis', 'Dify', 'Coze', '提示词工程', '每日分享', '面试环节'];
+    var groups = {};
     interviewPosts.forEach(function (p) {
-      var li = document.createElement('li');
-      li.innerHTML =
-        '<a class="site-page child lz-post-item" href="' + p.url + '"><span> ' + p.title + '</span></a>';
-      postsUl.appendChild(li);
+      var cat = (p.categories && p.categories.length) ? p.categories[0] : '其他';
+      (groups[cat] = groups[cat] || []).push(p);
+    });
+    var catNames = Object.keys(groups).sort(function (a, b) {
+      var ia = CAT_ORDER.indexOf(a);
+      var ib = CAT_ORDER.indexOf(b);
+      if (ia === -1) ia = 999;
+      if (ib === -1) ib = 999;
+      return ia - ib || (a < b ? -1 : a > b ? 1 : 0);
+    });
+    catNames.forEach(function (cat) {
+      var typeLi = document.createElement('li');
+      typeLi.className = 'lz-cat-item';
+      typeLi.innerHTML =
+        '<span class="site-page group"><i class="fa-fw fas fa-folder-open"></i><span> ' + cat + '（' + groups[cat].length + '）</span><i class="fas fa-chevron-down"></i></span>' +
+        '<ul class="lz-cat-posts"></ul>';
+      var typeUl = typeLi.querySelector('.lz-cat-posts');
+      groups[cat].forEach(function (p) {
+        var li = document.createElement('li');
+        li.innerHTML =
+          '<a class="site-page child lz-post-item" href="' + p.url + '"><span> ' + p.title + '</span></a>';
+        typeUl.appendChild(li);
+      });
+      postsUl.appendChild(typeLi);
     });
     childMenu.appendChild(groupLi);
 
